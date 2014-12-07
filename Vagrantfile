@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["cookbooks"]
+    chef.data_bags_path = "data_bags"
     chef.add_recipe :apt
     chef.add_recipe 'mysql::server'
     chef.add_recipe 'vim'
@@ -22,6 +23,7 @@ Vagrant.configure("2") do |config|
     chef.add_recipe 'rbenv::user'
     chef.add_recipe 'tomcat'
     chef.add_recipe 'java'
+    chef.add_recipe 'tomcat::users'
     chef.json = {
       :mysql => {
         :server_root_password   => "password",

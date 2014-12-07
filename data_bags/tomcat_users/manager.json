@@ -1,0 +1,8 @@
+{
+  "id": "manager",
+  "password": "manager",
+  "roles": [
+    "manager-gui",
+    "admin"
+  ]
+}

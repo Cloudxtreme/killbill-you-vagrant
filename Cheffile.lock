@@ -22,9 +22,6 @@ SITE
       build-essential (>= 0.0.0)
       yum (~> 3.0)
       yum-epel (>= 0.0.0)
-    tomcat (0.16.2)
-      java (>= 0.0.0)
-      openssl (>= 0.0.0)
     vim (1.1.2)
     windows (1.34.8)
       chef_handler (>= 0.0.0)
@@ -33,6 +30,15 @@ SITE
       yum (~> 3.0)
     yum-mysql-community (0.1.10)
       yum (>= 3.0)
+
+GIT
+  remote: https://github.com/ck-1/tomcat
+  ref: master
+  sha: ddc1e01d155e29096b0a2be05ccfdbff250b8867
+  specs:
+    tomcat (0.16.2)
+      java (>= 0.0.0)
+      openssl (>= 0.0.0)
 
 GIT
   remote: https://github.com/fnichol/chef-rbenv
