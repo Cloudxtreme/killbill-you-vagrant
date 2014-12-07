@@ -19,6 +19,8 @@ Vagrant.configure("2") do |config|
     chef.add_recipe 'git'
     chef.add_recipe 'ruby_build'
     chef.add_recipe 'rbenv::user'
+    chef.add_recipe 'tomcat'
+    chef.add_recipe 'java'
     chef.json = {
       :mysql => {
         :server_root_password   => "password",
@@ -46,9 +48,20 @@ Vagrant.configure("2") do |config|
             :rubies => [
               "2.1.5"
             ],
-            :global => "2.1.5"
+            :global => "2.1.5",
+            :gems => {"2.1.5" => [{:name => "kpm"}]}
           }
         ]
+      },
+      :java => {
+        :flavor => "oracle",
+        :jdk_version => "7",
+        :oracle => {
+          :accept_oracle_download_terms => true
+        }
+      },
+      :tomcat => {
+        :base_version => 7
       }
     }
   end
