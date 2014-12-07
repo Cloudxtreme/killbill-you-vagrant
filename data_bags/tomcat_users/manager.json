@@ -3,6 +3,8 @@
   "password": "manager",
   "roles": [
     "manager-gui",
-    "admin"
+    "admin-gui",
+    "manager-script",
+    "admin-script"
   ]
 }
