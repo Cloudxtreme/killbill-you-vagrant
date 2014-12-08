@@ -1,0 +1,6 @@
+killbill:
+  version: 0.12.1
+  webapp_path: /var/lib/tomcat7/webapps/ROOT.war
+kaui:
+  version: LATEST
+  webapp_path: /var/lib/tomcat7/webapps/kaui

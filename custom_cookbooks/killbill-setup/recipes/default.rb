@@ -34,3 +34,19 @@ bash "install_killbill_dbs" do
 	echo Installed killbill tables
 	EOH
 end
+
+
+bash "configure_catalina_properties" do
+	user "root"
+	cwd "/tmp"
+	code <<-EOH
+	echo ##tomcat_config >> /var/lib/tomcat7/conf/catalina.properties
+	echo org.killbill.billing.osgi.dao.url: jdbc:mysql://127.0.0.1:3306/killbill >> /var/lib/tomcat7/conf/catalina.properties
+	echo org.killbill.billing.osgi.dao.user: killbill >> /var/lib/tomcat7/conf/catalina.properties
+	echo org.killbill.billing.osgi.dao.password: killbill >> /var/lib/tomcat7/conf/catalina.properties
+	echo org.killbill.dao.url: jdbc:mysql://127.0.0.1:3306/killbill >> /var/lib/tomcat7/conf/catalina.properties
+	echo org.killbill.dao.user: killbill >> /var/lib/tomcat7/conf/catalina.properties
+	echo org.killbill.dao.password: killbill >> /var/lib/tomcat7/conf/catalina.properties
+	EOH
+	not_if 'grep -q "##tomcat_config" /var/lib/tomcat7/conf/catalina.properties'
+end

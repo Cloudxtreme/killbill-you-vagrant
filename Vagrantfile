@@ -11,7 +11,6 @@ Vagrant.configure("2") do |config|
   config.ssh.forward_agent = true
 	
 	config.vm.network "forwarded_port", guest: 8080, host: 8080
-
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["cookbooks", "custom_cookbooks"]
     chef.data_bags_path = "data_bags"
@@ -69,4 +68,6 @@ Vagrant.configure("2") do |config|
       }
     }
   end
+
+  config.vm.provision "shell", path: "install_killbill.sh", privileged: false
 end
