@@ -12,7 +12,7 @@ You need:
 - VirtualBox
 - Vagrant
 
-On windows this is a pain, so you can install VirtualBox by hand and then run `windows-install.sh` from within a git bash prompt.
+On windows this is a pain, so you can install VirtualBox by hand and then run `windows-install.sh` from within a git bash prompt. Some parts may fail; try closing any command prompts and running it again. If it fails again then skip `librarian-chef update` and just do `vagrant up`. 
 
 After the pre-reqs are installed, navigate to the repo directory and:
 
