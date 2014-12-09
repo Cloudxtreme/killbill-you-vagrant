@@ -21,6 +21,7 @@ mysql_database_user 'killbill' do
 	connection mysql_connection_info
 	database_name 'killbill'
 	password 'killbill'
+	host '%'
 	action :grant
 end
 
