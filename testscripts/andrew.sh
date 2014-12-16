@@ -53,6 +53,17 @@ curl -v \
   --data-binary '{"pluginName":"__EXTERNAL_PAYMENT__","pluginInfo":{}}' \
   "$KB/accounts/$ACTKEY/paymentMethods?isDefault=true"
 
+curl -v \
+  -u admin:password \
+  -H "X-Killbill-ApiKey: $APIKEY" \
+  -H "X-Killbill-ApiSecret: $APIKEY" \
+  -H "Content-Type: application/json" \
+  -H "X-Killbill-CreatedBy: curl" \
+  -X POST \
+  --data-binary '{"pluginName":"killbill-stripe","pluginInfo":{}}' \
+  "$KB/accounts/$ACTKEY/paymentMethods?isDefault=true"
+
+
 # authorize
 curl -v \
   -u admin:password \
@@ -63,7 +74,7 @@ curl -v \
   --data-binary '{"transactionType":"AUTHORIZE","amount":"10","currency":"USD","transactionExternalKey":"INV-001-AUTH"}' \
   "$KB/accounts/$ACTKEY/payments"
 
-PAYMENTID=17b2d3dd-ccd5-47a0-82f1-984b3b92abf3
+AUTHID=17b2d3dd-ccd5-47a0-82f1-984b3b92abf3
 
 # capture
 curl -v \
@@ -73,7 +84,7 @@ curl -v \
   -H "Content-Type: application/json" \
   -H "X-Killbill-CreatedBy: curl" \
   --data-binary '{"amount":"5","currency":"USD","transactionExternalKey":"INV-001-CAPTURE"}' \
-  "$KB/payments/$PAYMENTID"
+  "$KB/payments/$AUTHID"
 
 CAPTUREID=17b2d3dd-ccd5-47a0-82f1-984b3b92abf3 #thing from capture call
 
