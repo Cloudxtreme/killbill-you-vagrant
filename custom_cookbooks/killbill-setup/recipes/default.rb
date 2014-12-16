@@ -1,7 +1,11 @@
 include_recipe "database::mysql"
 
-# DB junk
+# packages
+package 'maven' do
+	action :install
+end
 
+# DB junk
 mysql_connection_info = {:host => "localhost",
                          :username => 'root',
                          :password => node['mysql']['server_root_password']}

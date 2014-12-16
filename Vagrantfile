@@ -25,9 +25,9 @@ Vagrant.configure("2") do |config|
     chef.add_recipe 'vim'
     chef.add_recipe 'git'
     chef.add_recipe 'ruby_build'
-    chef.add_recipe 'rbenv::user'
     chef.add_recipe 'tomcat'
     chef.add_recipe 'java'
+    chef.add_recipe 'rbenv::user'
     chef.add_recipe 'tomcat::users'
     chef.add_recipe 'killbill-setup'
     chef.json = {
@@ -55,10 +55,14 @@ Vagrant.configure("2") do |config|
           {
             :user   => "vagrant",
             :rubies => [
-              "2.1.5"
+              "2.1.5",
+              "jruby-1.7.16"
             ],
-            :global => "2.1.5",
-            :gems => {"2.1.5" => [{:name => "kpm"}]}
+            :global => "jruby-1.7.16",
+            :gems => {
+              "2.1.5" => [{:name => "kpm"}, {:name => "bundle"}],
+              "jruby-1.7.16" => [{:name => "kpm"}, {:name => "jbundler"}, {:name => "bundle"}]
+            }
           }
         ]
       },
