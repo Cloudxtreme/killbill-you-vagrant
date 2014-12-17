@@ -10,6 +10,8 @@ Vagrant.configure("2") do |config|
   config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-11.4.0.box"
   config.ssh.forward_agent = true
 
+  config.vm.synced_folder "bundles/", "/var/tmp/bundles/"
+
   config.vm.provider "virtualbox" do |v|
     v.memory = 2048
     v.cpus = 2
