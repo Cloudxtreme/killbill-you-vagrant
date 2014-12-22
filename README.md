@@ -25,6 +25,26 @@ This will download, start, and provision the vagrant box for use.
 
 Once this is all done (first run takes a while), you should be able to access `http://localhost:8080/api.html`
 
+## working on a plugin
+
+Clone your plugins into `plugins/`. These should not be checked in. For every plugin's .sql file, execute:
+
+```sh
+cat /path/to/sql/file.sql | mysql -h 127.0.0.1 -ukillbill -pkillbill killbill
+```
+
+This will setup any tables needed.
+
+The development workflow is:
+
+- Check out plugin
+- Work on plugin
+- Test plugin by deploying it to the `bundles/` folder (instructions in plugin readme)
+- Push plugin
+- Repeat
+
+If working on a new gateway that is not in active_merchant, make sure to clone it to `active_merchant` so that it is not checked into this repository.
+
 ## credentials
 
 MySQL (can be connected to from host machine): user `killbill`, password `killbill`, database `killbill`

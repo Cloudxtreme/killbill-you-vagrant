@@ -15,3 +15,5 @@ hs_err_pid*
 # cookbooks
 tmp/
 bundles/
+plugins/
+active_merchant/
