@@ -51,6 +51,18 @@ MySQL (can be connected to from host machine): user `killbill`, password `killbi
 
 Tomcat admin: user `manager`, password `manager`
 
+## Direct Connect
+
+Direct Connect is a... thing. It's one of our gateways for charging money. It has a 'Card Safe' feature that our clients like. Basically, Card Safe allows you to store a credit card, unassociated with a specific merchant. You can then charge them to any other merchant (Vendor in Direct Connect words) without having to reprompt. We make use of this in a few places.
+
+The flow for CardSafe transactions:
+
+1. Add a Customer to a vendor, making note of the CustomerKey - ManageCustomer
+2. Add a card to a customer through CardSafe, making note of the returned CcInfoKey/CardSafeKey - StoreCard
+3. Make a sale transaction, passing in a vendor, and make note of the returned PNRef - ProcessCreditCard (recurring)
+
+It looks like you cannot do only an auth when charging a CardSafe card. To perform a refund/void/repeat, use ProcessCreditCard, under CardSafe.
+
 ## fun facts
 
 - Changes to the bundles folder should never be checked in - it's the plugin deployment folder that the server loads from
