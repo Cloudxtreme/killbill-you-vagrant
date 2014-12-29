@@ -51,6 +51,17 @@ MySQL (can be connected to from host machine): user `killbill`, password `killbi
 
 Tomcat admin: user `manager`, password `manager`
 
+To setup proper ActiveMerchant credentials, run the following inside your VM:
+
+```sh
+mkdir -p ~/.active_merchant
+cp active_merchant/test/fixtures.yml ~/.active_merchant/fixtures.yml
+```
+
+Then change `~/.active_merchant/fixtures.yml` to have the right DirectConnect credentials (change the direct_connect section).
+
+NEVER check in any real credentials to the fixtures.yml file inside the repo! That is open source, and checking in those credentials
+
 ## Direct Connect
 
 Direct Connect is a... thing. It's one of our gateways for charging money. It has a 'Card Safe' feature that our clients like. Basically, Card Safe allows you to store a credit card, unassociated with a specific merchant. You can then charge them to any other merchant (Vendor in Direct Connect words) without having to reprompt. We make use of this in a few places.
