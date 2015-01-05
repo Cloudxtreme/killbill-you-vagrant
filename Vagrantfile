@@ -60,7 +60,7 @@ Vagrant.configure("2") do |config|
               "2.1.5",
               "jruby-1.7.16"
             ],
-            :global => "jruby-1.7.16",
+            :global => "2.1.5",
             :gems => {
               "2.1.5" => [{:name => "kpm"}, {:name => "bundle"}],
               "jruby-1.7.16" => [{:name => "kpm"}, {:name => "jbundler"}, {:name => "bundle"}]

@@ -25,6 +25,12 @@ This will download, start, and provision the vagrant box for use.
 
 Once this is all done (first run takes a while), you should be able to access `http://localhost:8080/api.html`
 
+You should be using git on your host machine, and ruby on the vagrant vm.
+
+```sh
+vagrant ssh
+
+
 ## working on a plugin
 
 Clone your plugins into `plugins/`. These should not be checked in. For every plugin's .sql file, execute:
@@ -43,7 +49,7 @@ The development workflow is:
 - Push plugin
 - Repeat
 
-If working on a new gateway that is not in active_merchant, make sure to clone it to `active_merchant` so that it is not checked into this repository.
+If working on a new gateway that is not in active_merchant, make sure to clone it to `active_merchant` so that it is not checked into this repository:
 
 ## credentials
 
@@ -61,6 +67,26 @@ cp active_merchant/test/fixtures.yml ~/.active_merchant/fixtures.yml
 Then change `~/.active_merchant/fixtures.yml` to have the right DirectConnect credentials (change the direct_connect section).
 
 NEVER check in any real credentials to the fixtures.yml file inside the repo! That is open source, and checking in those credentials
+
+## active_merchant
+
+To start work on active_merchant gateways, clone active_merchant from your host, and from inside the VM install the prereqs:
+
+```sh
+git clone git@github.com:ngpvan/active_merchant
+vagrant ssh
+cd /vagrant/active_merchant
+git checkout direct-connect-gateway
+rbenv global 2.1.5 # make sure we aren't using jruby
+bundle install
+```
+
+To run the tests, run one of the following from within the `active_merchant/` directory:
+
+```sh
+rake test:units TEST=test/unit/gateways/direct_connect_test.rb # unit tests
+rake test:remote TEST=test/remote/gateways/remote_direct_connect_test.rb # integration tests
+```
 
 ## Direct Connect
 
