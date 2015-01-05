@@ -29,7 +29,7 @@ You should be using git on your host machine, and ruby on the vagrant vm.
 
 ```sh
 vagrant ssh
-
+```
 
 ## working on a plugin
 
