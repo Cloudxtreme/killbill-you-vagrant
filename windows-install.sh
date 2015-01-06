@@ -22,4 +22,7 @@ curl -L https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5.msi >> vagrant.ms
 msiexec //qr //i vagrant.msi
 rm vagrant.msi
 
+git clone git@github.com:ngpvan/active_merchant
+git clone git@github.com:ngpvan/killbill-admin-ui
+
 echo [GO INSTALL VIRTUALBOX]
