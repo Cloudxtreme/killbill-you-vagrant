@@ -88,6 +88,13 @@ rake test:units TEST=test/unit/gateways/direct_connect_test.rb # unit tests
 rake test:remote TEST=test/remote/gateways/remote_direct_connect_test.rb # integration tests
 ```
 
+To run specific test methods, use the following
+
+```sh
+ruby -I"lib:test" test/unit/gateways/direct_connect_test.rb -n "test_method_name" # run 'test_method_name' in unit tests
+ruby -I"lib:test" test/remote/gateways/remote_direct_connect_test.rb -n "test_method_name" # run 'test_method_name' in remote tests
+```
+
 ## Direct Connect
 
 Direct Connect is a... thing. It's one of our gateways for charging money. It has a 'Card Safe' feature that our clients like. Basically, Card Safe allows you to store a credit card, unassociated with a specific merchant. You can then charge them to any other merchant (Vendor in Direct Connect words) without having to reprompt. We make use of this in a few places.
