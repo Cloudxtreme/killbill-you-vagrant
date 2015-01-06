@@ -3,7 +3,7 @@
 APIKEY=andrew
 KB=http://127.0.0.1:8080/1.0/kb
 EXKEY=andrew-varnerin
-TENKEY="158bf7a1-950b-42ef-b178-97fcddfec4c9" # replace on each new box/account
+TENKEY="3deacb77-699f-44ff-8cb5-cb80cb4d8c83" # replace on each new box/account
 ACTKEY="362eaf5e-acd8-411f-825e-46186ef29113" # replace on each new box/account
 
 # create tenant
