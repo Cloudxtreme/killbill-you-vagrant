@@ -107,6 +107,8 @@ The flow for CardSafe transactions:
 
 It looks like you cannot do only an auth when charging a CardSafe card. To perform a refund/void/repeat, use ProcessCreditCard, under CardSafe.
 
+- [Error Codes](https://gateway.1directconnect.com/paygate/nethelp/default.htm?turl=Documents%2Fresultresponsefielddefinition.htm)
+
 ## fun facts
 
 - Changes to the bundles folder should never be checked in - it's the plugin deployment folder that the server loads from
