@@ -49,51 +49,11 @@ The development workflow is:
 - Push plugin
 - Repeat
 
-If working on a new gateway that is not in active_merchant, make sure to clone it to `active_merchant` so that it is not checked into this repository:
-
 ## credentials
 
 MySQL (can be connected to from host machine): user `killbill`, password `killbill`, database `killbill`
 
 Tomcat admin: user `manager`, password `manager`
-
-To setup proper ActiveMerchant credentials, run the following inside your VM:
-
-```sh
-mkdir -p ~/.active_merchant
-cp active_merchant/test/fixtures.yml ~/.active_merchant/fixtures.yml
-```
-
-Then change `~/.active_merchant/fixtures.yml` to have the right DirectConnect credentials (change the direct_connect section).
-
-NEVER check in any real credentials to the fixtures.yml file inside the repo! That is open source, and checking in those credentials
-
-## active_merchant
-
-To start work on active_merchant gateways, clone active_merchant from your host, and from inside the VM install the prereqs:
-
-```sh
-git clone git@github.com:ngpvan/active_merchant
-vagrant ssh
-cd /vagrant/active_merchant
-git checkout direct-connect-gateway
-rbenv global 2.1.5 # make sure we aren't using jruby
-bundle install
-```
-
-To run the tests, run one of the following from within the `active_merchant/` directory:
-
-```sh
-rake test:units TEST=test/unit/gateways/direct_connect_test.rb # unit tests
-rake test:remote TEST=test/remote/gateways/remote_direct_connect_test.rb # integration tests
-```
-
-To run specific test methods, use the following
-
-```sh
-ruby -I"lib:test" test/unit/gateways/direct_connect_test.rb -n "test_method_name" # run 'test_method_name' in unit tests
-ruby -I"lib:test" test/remote/gateways/remote_direct_connect_test.rb -n "test_method_name" # run 'test_method_name' in remote tests
-```
 
 ## Direct Connect
 
@@ -106,6 +66,12 @@ The flow for CardSafe transactions:
 3. Make a sale transaction, passing in a vendor, and make note of the returned PNRef - ProcessCreditCard (recurring)
 
 It looks like you cannot do only an auth when charging a CardSafe card. To perform a refund/void/repeat, use ProcessCreditCard, under CardSafe.
+
+To get started on the direct connect plugin, clone [NGPVAN/killbill-direct-connect-plugin](https://github.com/NGPVAN/killbill-direct-connect-plugin) into the plugins folder:
+
+```sh
+git clone https://github.com/NGPVAN/killbill-direct-connect-plugin plugins/killbill-direct-connect-plugin
+```
 
 - [Error Codes](https://gateway.1directconnect.com/paygate/nethelp/default.htm?turl=Documents%2Fresultresponsefielddefinition.htm)
 
