@@ -8,4 +8,3 @@ sudo gem install i18n --no-ri --no-rdoc
 sudo gem uninstall i18n -v 0.7.0.beta1
 sudo kpm install kpm.yml
 sudo service tomcat7 start
-rbenv local jruby-1.7.16
