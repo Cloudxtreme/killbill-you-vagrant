@@ -12,12 +12,11 @@ You need on your host machine:
 - VirtualBox
 - Vagrant
 
-On windows this is a pain, so you can install VirtualBox by hand and then run `windows-install.sh` from within a git bash prompt. Some parts may fail as the installers are not great; try closing any command prompts and running it again. If it fails again then skip `librarian-chef update` and just do `vagrant up`. 
+On windows this is a pain, so you can install VirtualBox by hand and then run `windows-install.sh` from within a git bash prompt. Some parts may fail as the installers are not great; try closing any command prompts and running it again.
 
 After the pre-reqs are installed, navigate to the repo directory and:
 
 ```sh
-librarian-chef update
 vagrant up
 ```
 
