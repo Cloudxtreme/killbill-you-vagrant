@@ -56,7 +56,7 @@ Tomcat admin: user `manager`, password `manager`
 
 ## Direct Connect
 
-Direct Connect is a... thing. It's one of our gateways for charging money. It has a 'Card Safe' feature that our clients like. Basically, Card Safe allows you to store a credit card, unassociated with a specific merchant. You can then charge them to any other merchant (Vendor in Direct Connect words) without having to reprompt. We make use of this in a few places.
+Direct Connect is a gateway for charging money. It has a 'CardSafe' feature that allows you to store a credit card, unassociated with a specific merchant. A token is generated when storing a card, which can then be used to make charges for any merchant (or 'vendor' as Direct Connect calls them) without having to reprompt. We make use of this in a few places.
 
 The flow for CardSafe transactions:
 
@@ -66,7 +66,7 @@ The flow for CardSafe transactions:
 
 It looks like you cannot do only an auth when charging a CardSafe card. To perform a refund/void/repeat, use ProcessCreditCard, under CardSafe.
 
-To get started on the direct connect plugin, clone [NGPVAN/killbill-direct-connect-plugin](https://github.com/NGPVAN/killbill-direct-connect-plugin) into the plugins folder:
+To install the Direct Connect plugin, clone it from [NGPVAN/killbill-direct-connect-plugin](https://github.com/NGPVAN/killbill-direct-connect-plugin) into your plugins folder. IMPORTANT: Run this clone command from within your vagrant terminal. Otherwise you and many others will suffer:
 
 ```sh
 git clone https://github.com/NGPVAN/killbill-direct-connect-plugin plugins/killbill-direct-connect-plugin
@@ -81,4 +81,4 @@ git clone https://github.com/NGPVAN/killbill-direct-connect-plugin plugins/killb
 - Oh SQL, MY SQL! Our fearful trip is done. You can access the MySQL DB from the host machine by connecting on localhost:3306
 - It would be nice to make the host install scripts a bit nicer but chocolatey is being a pain and people with a mac/linux probably have a preferred ruby management solution anyway
 - D'yer Mak'er is not "Dire Maker" - it's closer to "Jamaica"
- 
+
