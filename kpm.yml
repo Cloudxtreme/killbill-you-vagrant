@@ -1,6 +1,6 @@
 killbill:
   version: 0.12.1
-  webapp_path: /var/lib/tomcat7/webapps/ROOT.war
+  webapp_path: /var/tmp/tomcat/webapps/ROOT.war
   plugins_dir: /var/tmp/bundles
   plugins:
     ruby:
@@ -8,4 +8,4 @@ killbill:
         version: 0.2.1
 kaui:
   version: LATEST
-  webapp_path: /var/lib/tomcat7/webapps/kaui
+  webapp_path: /var/tmp/tomcat/webapps/kaui

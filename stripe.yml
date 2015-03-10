@@ -1,0 +1,9 @@
+:stripe:
+  :api_secret_key: 'sk_test_aaaabbbbccccdddd'
+  :test: true
+
+:database:
+  :adapter: 'jdbcmysql'
+  :jndi: 'killbill/osgi/jdbc'
+  :connection_alive_sql: 'select 1'
+  :pool: 25
