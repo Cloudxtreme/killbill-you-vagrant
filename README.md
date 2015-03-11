@@ -30,6 +30,8 @@ You should be using git on your host machine, and ruby on the vagrant vm.
 vagrant ssh
 ```
 
+Everything after this section assumes that you are operating inside your vagrant box.
+
 ## working on a plugin
 
 Clone your plugins into `plugins/`. These should not be checked in. For every plugin's .sql file, execute:
@@ -73,6 +75,16 @@ git clone https://github.com/NGPVAN/killbill-direct-connect-plugin plugins/killb
 ```
 
 - [Error Codes](https://gateway.1directconnect.com/paygate/nethelp/default.htm?turl=Documents%2Fresultresponsefielddefinition.htm)
+
+## running the server
+
+The killbill server isn't always running. To run the server and output the server log, use the `run` script in the root of this repo while inside vagrant:
+
+```sh
+./run
+```
+
+The usual `ctrl-c` command will gracefully stop the server. Extra logs from the server are at `this-repo/logs/`.
 
 ## fun facts
 

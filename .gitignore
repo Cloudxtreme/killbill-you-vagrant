@@ -18,3 +18,4 @@ bundles/
 plugins/
 active_merchant/
 killbill-admin-ui/
+logs/

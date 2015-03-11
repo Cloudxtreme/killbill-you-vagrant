@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo /var/tmp/tomcat/bin/catalina.sh run
