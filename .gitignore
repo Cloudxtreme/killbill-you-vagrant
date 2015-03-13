@@ -19,3 +19,4 @@ plugins/
 active_merchant/
 killbill-admin-ui/
 logs/
+killbill-source
