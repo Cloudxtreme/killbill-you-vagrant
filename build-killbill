@@ -1,0 +1,27 @@
+#!/bin/sh
+
+KBPATH='/vagrant/killbill-source' # base path for source compiling
+mkdir -p $KBPATH
+ 
+echo "cloning repositories"
+cd $KBPATH
+git clone http://github.com/killbill/killbill # killbill-0.12.1
+git clone http://github.com/killbill/killbill-oss-parent # killbill-oss-parent-0.9.2
+git clone http://github.com/killbill/killbill-commons #killbill-commons-0.2.28
+git clone http://github.com/killbill/killbill-platform #killbill-platform-0.1.1
+ 
+echo "checking out release versions"
+cd $KBPATH/killbill && git checkout killbill-0.12.1
+cd $KBPATH/killbill-oss-parent && git checkout killbill-oss-parent-0.9.2
+cd $KBPATH/killbill-commons && git checkout killbill-commons-0.2.28
+cd $KBPATH/killbill-platform && git checkout killbill-platform-0.1.1
+
+echo "building source"
+cd $KBPATH/killbill-oss-parent && mvn clean install
+cd $KBPATH/killbill-commons && mvn clean install
+cd $KBPATH/killbill-platform && mvn clean install
+cd $KBPATH/killbill && mvn clean install
+ 
+echo "packaging source"
+cd $KBPATH/killbill && mvn package
+cd $KBPATH/killbill/profiles/killbill
