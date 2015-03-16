@@ -11,18 +11,19 @@ fi
 pushd .
 
 # paths
-KBPATH='/vagrant/killbill-source' # base path for source compiling
+ROOTPATH='/vagrant'
+KBPATH='$ROOTPATH/killbill-source' # base path for source compiling
 DEPLOYPATH='/var/tmp/tomcat/webapps'
 DEPLOYNAME='ROOT'
 
 # KB version name to deploy
-KBVER='0.12.1'
+KBVER='0.13.5'
 
 # git tags to check out
 KBTAG="killbill-$KBVER"
-OSSPARENTTAG="killbill-oss-parent-0.9.2"
-COMMONSTAG="killbill-commons-0.2.28"
-PLATFORMTAG="xml-patch"
+OSSPARENTTAG="killbill-oss-parent-0.9.15"
+COMMONSTAG="killbill-commons-0.2.33"
+PLATFORMTAG="killbill-platform-0.1.4"
 
 mkdir -p $KBPATH
  
@@ -36,10 +37,10 @@ if [ "$1" = "-c" ]; then
 fi
 
 echo "checking out release versions"
-cd $KBPATH/killbill && git checkout $KBTAG
-cd $KBPATH/killbill-oss-parent && git checkout $OSSPARENTTAG
-cd $KBPATH/killbill-commons && git checkout $COMMONSTAG
-cd $KBPATH/killbill-platform && git checkout $PLATFORMTAG
+cd $KBPATH/killbill && git fetch && git checkout $KBTAG
+cd $KBPATH/killbill-oss-parent && git fetch && git checkout $OSSPARENTTAG
+cd $KBPATH/killbill-commons && git fetch && git checkout $COMMONSTAG
+cd $KBPATH/killbill-platform && git fetch && git checkout $PLATFORMTAG
 
 echo "building source"
 cd $KBPATH/killbill-oss-parent && mvn clean install
@@ -55,6 +56,9 @@ sudo rm -rf $DEPLOYPATH/$DEPLOYNAME
 sudo rm $DEPLOYPATH/$DEPLOYNAME.war
 sudo cp $KBPATH/killbill/profiles/killbill/target/killbill-profiles-killbill-$KBVER.war $DEPLOYPATH/$DEPLOYNAME.war
 
+echo "creating ddl-concat.sql"
+$ROOTPATH/create-ddl
+
 echo "killbill $KBVER deployed from sources: "
 echo "killbill: $KBTAG"
 echo "killbill-platform: $PLATFORMTAG"
@@ -62,3 +66,4 @@ echo "killbill-commons: $COMMONSTAG"
 echo "killbill-oss-parent: $OSSPARENTTAG"
 
 popd
+
