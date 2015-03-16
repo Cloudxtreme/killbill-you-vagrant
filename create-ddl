@@ -1,0 +1,16 @@
+#!/bin/bash
+
+DDLPATH='/vagrant/ddl-concat.sql'
+SOURCEPATH='/vagrant/killbill-source/killbill'
+
+cd /vagrant
+echo 'use killbill;' > $DDLPATH
+
+cd $SOURCEPATH
+
+for I in `find . -iname ddl.sql | grep src`
+do
+  cat $I >> $DDLPATH
+  echo ';' >> $DDLPATH
+done
+

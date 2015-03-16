@@ -11,7 +11,8 @@ fi
 pushd .
 
 # paths
-KBPATH='/vagrant/killbill-source' # base path for source compiling
+ROOTPATH='/vagrant'
+KBPATH='$ROOTPATH/killbill-source' # base path for source compiling
 DEPLOYPATH='/var/tmp/tomcat/webapps'
 DEPLOYNAME='ROOT'
 
@@ -55,6 +56,9 @@ sudo rm -rf $DEPLOYPATH/$DEPLOYNAME
 sudo rm $DEPLOYPATH/$DEPLOYNAME.war
 sudo cp $KBPATH/killbill/profiles/killbill/target/killbill-profiles-killbill-$KBVER.war $DEPLOYPATH/$DEPLOYNAME.war
 
+echo "creating ddl-concat.sql"
+$ROOTPATH/create-ddl
+
 echo "killbill $KBVER deployed from sources: "
 echo "killbill: $KBTAG"
 echo "killbill-platform: $PLATFORMTAG"
@@ -62,3 +66,4 @@ echo "killbill-commons: $COMMONSTAG"
 echo "killbill-oss-parent: $OSSPARENTTAG"
 
 popd
+
