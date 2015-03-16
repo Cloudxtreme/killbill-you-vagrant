@@ -36,10 +36,10 @@ if [ "$1" = "-c" ]; then
 fi
 
 echo "checking out release versions"
-cd $KBPATH/killbill && git checkout $KBTAG
-cd $KBPATH/killbill-oss-parent && git checkout $OSSPARENTTAG
-cd $KBPATH/killbill-commons && git checkout $COMMONSTAG
-cd $KBPATH/killbill-platform && git checkout $PLATFORMTAG
+cd $KBPATH/killbill && git fetch && git checkout $KBTAG
+cd $KBPATH/killbill-oss-parent && git fetch && git checkout $OSSPARENTTAG
+cd $KBPATH/killbill-commons && git fetch && git checkout $COMMONSTAG
+cd $KBPATH/killbill-platform && git fetch && git checkout $PLATFORMTAG
 
 echo "building source"
 cd $KBPATH/killbill-oss-parent && mvn clean install
