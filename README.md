@@ -86,11 +86,8 @@ The killbill server isn't always running. To run the server and output the serve
 
 The usual `ctrl-c` command will gracefully stop the server. Extra logs from the server are at `this-repo/logs/`.
 
-## fun facts
+## misc
 
 - Changes to the bundles folder should never be checked in - it's the plugin deployment folder that the server loads from
 - This isn't setup for development of plugins yet, as we need to figure out the best way to do that while having them loaded from git repos
-- Oh SQL, MY SQL! Our fearful trip is done. You can access the MySQL DB from the host machine by connecting on localhost:3306
-- It would be nice to make the host install scripts a bit nicer but chocolatey is being a pain and people with a mac/linux probably have a preferred ruby management solution anyway
-- D'yer Mak'er is not "Dire Maker" - it's closer to "Jamaica"
-
+- You can access the MySQL DB from the host machine by connecting on localhost:3306
